@@ -18,6 +18,8 @@
 		66E68AC61C21F82D00E2E7C3 /* Park.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68AC21C21F82D00E2E7C3 /* Park.swift */; };
 		66E68ACA1C22020B00E2E7C3 /* AttractionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68AC91C22020B00E2E7C3 /* AttractionType.swift */; };
 		66E68ACC1C22156400E2E7C3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68ACB1C22156400E2E7C3 /* Extensions.swift */; };
+		66E68ACE1C22158E00E2E7C3 /* ParkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68ACD1C22158E00E2E7C3 /* ParkView.swift */; };
+		66E68AD01C22188E00E2E7C3 /* ParkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68ACF1C22188E00E2E7C3 /* ParkType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		66E68AC21C21F82D00E2E7C3 /* Park.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Park.swift; sourceTree = "<group>"; };
 		66E68AC91C22020B00E2E7C3 /* AttractionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionType.swift; sourceTree = "<group>"; };
 		66E68ACB1C22156400E2E7C3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		66E68ACD1C22158E00E2E7C3 /* ParkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkView.swift; sourceTree = "<group>"; };
+		66E68ACF1C22188E00E2E7C3 /* ParkType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,7 @@
 			children = (
 				66E68AAD1C21F7CD00E2E7C3 /* AppDelegate.swift */,
 				66E68AAF1C21F7CD00E2E7C3 /* ParksViewController.swift */,
+				66E68ACD1C22158E00E2E7C3 /* ParkView.swift */,
 				66E68AB11C21F7CD00E2E7C3 /* Main.storyboard */,
 				66E68AB41C21F7CD00E2E7C3 /* Assets.xcassets */,
 				66E68AB61C21F7CD00E2E7C3 /* LaunchScreen.storyboard */,
@@ -77,6 +82,7 @@
 				66E68AC11C21F82D00E2E7C3 /* Attraction.swift */,
 				66E68AC91C22020B00E2E7C3 /* AttractionType.swift */,
 				66E68AC21C21F82D00E2E7C3 /* Park.swift */,
+				66E68ACF1C22188E00E2E7C3 /* ParkType.swift */,
 				66E68ACB1C22156400E2E7C3 /* Extensions.swift */,
 			);
 			path = Queue;
@@ -154,9 +160,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				66E68AB01C21F7CD00E2E7C3 /* ParksViewController.swift in Sources */,
+				66E68ACE1C22158E00E2E7C3 /* ParkView.swift in Sources */,
 				66E68AC61C21F82D00E2E7C3 /* Park.swift in Sources */,
 				66E68AC41C21F82D00E2E7C3 /* ParksManager.swift in Sources */,
 				66E68ACC1C22156400E2E7C3 /* Extensions.swift in Sources */,
+				66E68AD01C22188E00E2E7C3 /* ParkType.swift in Sources */,
 				66E68AC51C21F82D00E2E7C3 /* Attraction.swift in Sources */,
 				66E68ACA1C22020B00E2E7C3 /* AttractionType.swift in Sources */,
 				66E68AC31C21F82D00E2E7C3 /* TokenManager.swift in Sources */,
