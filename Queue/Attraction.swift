@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Attraction: RawRepresentable, Hashable, CustomStringConvertible {
+struct Attraction: RawRepresentable {
     
     let name: String
     let identifier: Int
@@ -18,28 +18,41 @@ struct Attraction: RawRepresentable, Hashable, CustomStringConvertible {
     let rawValue: [String: AnyObject]
     
     init?(rawValue: [String: AnyObject]) {
-        self.rawValue = [:]
+        self.rawValue = rawValue
         
         guard let name = rawValue["name"] as? String,
-            waitTime = rawValue["waitTime"]?["postedWaitMinutes"] as? Int,
+            waitTimeInfo = rawValue["waitTime"] as? [String: AnyObject],
+            status = waitTimeInfo["status"] as? String,
             id = (rawValue["id"] as? String)?.componentsSeparatedByString(";").first,
-            identifier = Int(id) else {
-            return nil
+            identifier = Int(id)
+            else {
+                print("Attraction failed verification: \(rawValue)")
+                return nil
         }
         
         self.name = name
         self.identifier = identifier
         
-        self.waitTime = waitTime
-        self.status = ""
+        self.waitTime = waitTimeInfo["postedWaitMinutes"] as? Int
+        self.status = status
     }
-    
+}
+
+extension Attraction: CustomStringConvertible {
+    var description: String {
+        return "\(name): \(status)" + (waitTime == nil ? "" : ", \(waitTime) minutes")
+    }
+}
+
+extension Attraction: CustomDebugStringConvertible {
+    var debugDescription: String {
+        return "[\n name: \(name)\n identifier: \(identifier)\n " + (waitTime == nil ? "" : "waitTime: \(waitTime!)\n ") + "status: \(status)\n]"
+    }
+}
+
+extension Attraction: Hashable {
     var hashValue: Int {
         return identifier
-    }
-    
-    var description: String {
-        return "[\n name: \(name)\n identifier: \(identifier)\n " + (waitTime == nil ? "" : "waitTime: \(waitTime!)\n ") + "status: \(status)\n]"
     }
 }
 
