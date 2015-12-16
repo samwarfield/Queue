@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ParksViewController.swift
 //  Queue
 //
 //  Created by Adam Binsz on 12/16/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ParksViewController: UIViewController {
 
     let parksManager = ParksManager()
     
