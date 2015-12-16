@@ -10,9 +10,17 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let parksManager = ParksManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        parksManager.fetchAttractionsFor(.MagicKingdom) { park, error in
+            
+            let rawValues = park?.attractions.map{$0.rawValue}
+            print(rawValues)
+        }
     }
 
     override func didReceiveMemoryWarning() {
