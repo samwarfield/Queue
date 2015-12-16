@@ -11,6 +11,7 @@ import Foundation
 struct Attraction: RawRepresentable {
     
     let name: String
+    let type: AttractionType
     let identifier: Int
     let waitTime: Int?
     let status: String
@@ -21,6 +22,8 @@ struct Attraction: RawRepresentable {
         self.rawValue = rawValue
         
         guard let name = rawValue["name"] as? String,
+            typeString = rawValue["type"] as? String,
+            type = AttractionType(rawValue: typeString),
             waitTimeInfo = rawValue["waitTime"] as? [String: AnyObject],
             status = waitTimeInfo["status"] as? String,
             id = (rawValue["id"] as? String)?.componentsSeparatedByString(";").first,
@@ -31,6 +34,7 @@ struct Attraction: RawRepresentable {
         }
         
         self.name = name
+        self.type = type
         self.identifier = identifier
         
         self.waitTime = waitTimeInfo["postedWaitMinutes"] as? Int
@@ -40,13 +44,13 @@ struct Attraction: RawRepresentable {
 
 extension Attraction: CustomStringConvertible {
     var description: String {
-        return "\(name): \(status)" + (waitTime == nil ? "" : ", \(waitTime) minutes")
+        return "\(name): " + (waitTime == nil ? "\(status)" : "\(waitTime!) minutes")
     }
 }
 
 extension Attraction: CustomDebugStringConvertible {
     var debugDescription: String {
-        return "[\n name: \(name)\n identifier: \(identifier)\n " + (waitTime == nil ? "" : "waitTime: \(waitTime!)\n ") + "status: \(status)\n]"
+        return "[\n name: \(name)\n type: \(type)\n identifier: \(identifier)\n " + (waitTime == nil ? "" : "waitTime: \(waitTime!)\n ") + "status: \(status)\n]"
     }
 }
 
