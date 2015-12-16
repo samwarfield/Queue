@@ -17,6 +17,7 @@
 		66E68AC51C21F82D00E2E7C3 /* Attraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68AC11C21F82D00E2E7C3 /* Attraction.swift */; };
 		66E68AC61C21F82D00E2E7C3 /* Park.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68AC21C21F82D00E2E7C3 /* Park.swift */; };
 		66E68ACA1C22020B00E2E7C3 /* AttractionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68AC91C22020B00E2E7C3 /* AttractionType.swift */; };
+		66E68ACC1C22156400E2E7C3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68ACB1C22156400E2E7C3 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		66E68AC11C21F82D00E2E7C3 /* Attraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attraction.swift; sourceTree = "<group>"; };
 		66E68AC21C21F82D00E2E7C3 /* Park.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Park.swift; sourceTree = "<group>"; };
 		66E68AC91C22020B00E2E7C3 /* AttractionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionType.swift; sourceTree = "<group>"; };
+		66E68ACB1C22156400E2E7C3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				66E68AC11C21F82D00E2E7C3 /* Attraction.swift */,
 				66E68AC91C22020B00E2E7C3 /* AttractionType.swift */,
 				66E68AC21C21F82D00E2E7C3 /* Park.swift */,
+				66E68ACB1C22156400E2E7C3 /* Extensions.swift */,
 			);
 			path = Queue;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 				66E68AB01C21F7CD00E2E7C3 /* ParksViewController.swift in Sources */,
 				66E68AC61C21F82D00E2E7C3 /* Park.swift in Sources */,
 				66E68AC41C21F82D00E2E7C3 /* ParksManager.swift in Sources */,
+				66E68ACC1C22156400E2E7C3 /* Extensions.swift in Sources */,
 				66E68AC51C21F82D00E2E7C3 /* Attraction.swift in Sources */,
 				66E68ACA1C22020B00E2E7C3 /* AttractionType.swift in Sources */,
 				66E68AC31C21F82D00E2E7C3 /* TokenManager.swift in Sources */,
