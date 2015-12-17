@@ -8,13 +8,32 @@
 
 import UIKit
 
-class ParksViewController: UIViewController {
+class ParksViewController: UINavigationController {
 
     let parksManager = ParksManager()
     
+    let stackView = UIStackView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        stackView.axis = .Vertical
+        stackView.alignment = .Fill
+        stackView.distribution = .FillEqually
+        view.addSubview(stackView)
+        NSLayoutConstraint.activateConstraints(stackView.constraintsEqualToSuperview())
+        
+        for parkType in ParkType.allValues {
+            let parkView = ParkView()
+            parkView.titleLabel.text = parkType.description
+            parkView.backgroundColor = parkType.color
+            parkView.tag = parkType.rawValue
+            
+            let gestureRecognizer = UITapGestureRecognizer(target: self, action: "parkViewTapped:")
+            parkView.addGestureRecognizer(gestureRecognizer)
+            
+            stackView.addArrangedSubview(parkView)
+        }
         
         parksManager.fetchAttractionsFor(.MagicKingdom) { park, error in
             
@@ -22,12 +41,14 @@ class ParksViewController: UIViewController {
             print(rawValues)
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
-
-
+    
+    func parkViewTapped(sender: UITapGestureRecognizer) {
+        guard let view = sender.view, parkType = ParkType(rawValue: view.tag) else { return }
+        
+    }
 }
 
