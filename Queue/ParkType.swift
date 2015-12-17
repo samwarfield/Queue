@@ -6,7 +6,7 @@
 //  Copyright © 2015 Adam Binsz. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum ParkType: Int, CustomStringConvertible {
     case MagicKingdom = 80007944
@@ -26,6 +26,19 @@ enum ParkType: Int, CustomStringConvertible {
             return "Hollywood Studios"
         case .AnimalKingdom:
             return "Animal Kingdom"
+        }
+    }
+    
+    var color: UIColor {
+        switch self {
+        case .MagicKingdom:
+            return UIColor(red: 231.0/255.0, green: 49.0/255.0, blue: 86.0/255.0, alpha: 1.0)
+        case .Epcot:
+            return UIColor(red: 122.0/255.0, green: 82.0/255.0, blue: 204.0/255.0, alpha: 1.0)
+        case .HollywoodStudios:
+            return UIColor(red: 244.0/255.0, green: 156.0/255.0, blue: 0.0/255.0, alpha: 1.0)
+        case .AnimalKingdom:
+            return UIColor(red: 114.0/255.0, green: 189.0/255.0, blue: 72.0/255.0, alpha: 1.0)
         }
     }
 }
