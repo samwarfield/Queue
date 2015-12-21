@@ -83,7 +83,7 @@ class AttractionsViewController: UITableViewController {
         tableView.backgroundColor = parkType.color.colorWithAlphaComponent(transparency)
         tableView.indicatorStyle = .White
         tableView.registerNib(UINib(nibName: "AttractionCell", bundle: nil), forCellReuseIdentifier: AttractionCellIdentifier)
-        tableView.estimatedRowHeight = 40
+        tableView.estimatedRowHeight = 58
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
         tableView.tableFooterView = UIView()

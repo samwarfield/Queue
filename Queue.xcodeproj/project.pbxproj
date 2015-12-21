@@ -61,8 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				66E68AD11C2237E300E2E7C3 /* AttractionsViewController.swift */,
-				66E68AD51C233E1800E2E7C3 /* AttractionCell.xib */,
 				66E68AD31C2269BF00E2E7C3 /* AttractionCell.swift */,
+				66E68AD51C233E1800E2E7C3 /* AttractionCell.xib */,
 			);
 			name = "Attractions View Controller";
 			sourceTree = "<group>";
