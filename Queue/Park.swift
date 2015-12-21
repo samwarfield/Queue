@@ -13,14 +13,3 @@ struct Park {
     var attractions: [Attraction]
     let lastUpdated: NSDate
 }
-
-extension Park: Hashable {
-    var hashValue: Int {
-        return type.rawValue
-    }
-}
-
-extension Park: Equatable {}
-func ==(lhs: Park, rhs: Park) -> Bool {
-    return lhs.hashValue == rhs.hashValue
-}
