@@ -49,7 +49,7 @@ class ParksManager {
             "Accept" : "application/json;apiversion=1",
             "X-Conversation-Id" : "~WDPRO-MOBILE.CLIENT-PROD"]
         
-        let session = NSURLSession(configuration: configuration)
+        let session = NSURLSession(configuration: configuration, delegate: nil, delegateQueue: NSOperationQueue.mainQueue())
         let request = NSURLRequest(URL: URL)
         
         session.dataTaskWithRequest(request) { responseData, URLResponse, error in
@@ -61,9 +61,7 @@ class ParksManager {
                 completion?(park: completionPark, error: completionError)
             }
             
-            guard let responseData = responseData else {
-                return
-            }
+            guard let responseData = responseData else { return }
             
             do {
                 let response = try NSJSONSerialization.JSONObjectWithData(responseData, options: [])
