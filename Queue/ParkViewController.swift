@@ -82,17 +82,16 @@ class ParkViewController: UITableViewController {
         
         tableView.backgroundColor = parkType.color.colorWithAlphaComponent(transparency)
         tableView.indicatorStyle = .White
-        
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: "refreshAttractions:", forControlEvents: .ValueChanged)
-        refreshControl?.tintColor = UIColor.whiteColor()
-        refreshControl?.tintColorDidChange()
-        
         tableView.registerNib(UINib(nibName: "AttractionCell", bundle: nil), forCellReuseIdentifier: AttractionCellIdentifier)
         tableView.estimatedRowHeight = 40
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
         tableView.tableFooterView = UIView()
+        
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: "refreshAttractions:", forControlEvents: .ValueChanged)
+        refreshControl?.tintColor = UIColor.whiteColor()
+        refreshControl?.tintColorDidChange()
         
         let toolbarButton = UIBarButtonItem(customView: toolbarLabel)
         let flexibleButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
