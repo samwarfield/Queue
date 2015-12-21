@@ -16,6 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let shadowImage = UIImage.fromColor(UIColor.whiteColor().colorWithAlphaComponent(0.2))
+        
+        UINavigationBar.appearance().translucent = false
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        UINavigationBar.appearance().shadowImage = shadowImage
+        
+        UIToolbar.appearance().setBackgroundImage(UIImage(), forToolbarPosition: .Bottom, barMetrics: .Default)
+        UIToolbar.appearance().setShadowImage(shadowImage, forToolbarPosition: .Bottom)
+        UIToolbar.appearance().translucent = false
+        
         return true
     }
 
@@ -40,7 +53,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
-

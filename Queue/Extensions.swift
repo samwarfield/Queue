@@ -46,3 +46,17 @@ extension UIView {
         return attributes.map { self.constraintWithAttribute($0, relation, to: item, multiplier: multiplier, constant: constant) }
     }
 }
+
+extension UIImage {
+    class func fromColor(color: UIColor) -> UIImage {
+        let rect = CGRect(origin: CGPoint.zero, size: CGSize(width: 1, height: 1))
+        UIGraphicsBeginImageContext(rect.size)
+        defer { UIGraphicsEndImageContext() }
+        let context = UIGraphicsGetCurrentContext()
+        
+        CGContextSetFillColorWithColor(context, color.CGColor)
+        CGContextFillRect(context, rect)
+        
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+}

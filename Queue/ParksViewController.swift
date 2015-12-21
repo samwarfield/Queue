@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ParksViewController: UINavigationController {
+class ParksViewController: UIViewController {
 
     let parksManager = ParksManager()
     
@@ -36,19 +36,25 @@ class ParksViewController: UINavigationController {
         }
         
         parksManager.fetchAttractionsFor(.MagicKingdom) { park, error in
-            
-            let rawValues = park?.attractions.map{$0.rawValue}
-            print(rawValues)
+            print(park?.type)
+            for parkType in ParkType.allValues {
+                if parkType == .MagicKingdom { continue }
+                self.parksManager.fetchAttractionsFor(parkType) { park, error in
+                    print(park?.type)
+                }
+            }
         }
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override func viewWillAppear(animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.setToolbarHidden(true, animated: true)
     }
     
     func parkViewTapped(sender: UITapGestureRecognizer) {
         guard let view = sender.view, parkType = ParkType(rawValue: view.tag) else { return }
-        
+        let parkViewController = ParkViewController(parkType: parkType, parksManager: parksManager)
+        navigationController?.pushViewController(parkViewController, animated: true)
     }
 }
 

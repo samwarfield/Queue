@@ -10,7 +10,7 @@ import Foundation
 
 struct Park {
     let type: ParkType
-    let attractions: [Attraction]
+    var attractions: [Attraction]
     let lastUpdated: NSDate
 }
 

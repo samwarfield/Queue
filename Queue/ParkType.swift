@@ -41,4 +41,17 @@ enum ParkType: Int, CustomStringConvertible {
             return UIColor(red: 114.0/255.0, green: 189.0/255.0, blue: 72.0/255.0, alpha: 1.0)
         }
     }
+    
+    var lightColor: UIColor {
+        switch self {
+        case .MagicKingdom:
+            return UIColor(red: 232.0/255.0, green: 61.0/255.0, blue: 97.0/255.0, alpha: 1.0)
+        case .Epcot:
+            return UIColor(red: 122.0/255.0, green: 82.0/255.0, blue: 204.0/255.0, alpha: 1.0)
+        case .HollywoodStudios:
+            return UIColor(red: 244.0/255.0, green: 156.0/255.0, blue: 0.0/255.0, alpha: 1.0)
+        case .AnimalKingdom:
+            return UIColor(red: 114.0/255.0, green: 189.0/255.0, blue: 72.0/255.0, alpha: 1.0)
+        }
+    }
 }
