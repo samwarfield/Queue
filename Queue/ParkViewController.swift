@@ -23,6 +23,7 @@ class ParkViewController: UITableViewController {
     private let parkType: ParkType
     private let parksManager: ParksManager
     
+    private let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
     private let toolbarLabel: UILabel = {
         let toolbarLabel = UILabel()
         toolbarLabel.text = "Refreshing…"
@@ -91,6 +92,7 @@ class ParkViewController: UITableViewController {
         tableView.estimatedRowHeight = 40
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
+        tableView.tableFooterView = UIView()
         
         let toolbarButton = UIBarButtonItem(customView: toolbarLabel)
         let flexibleButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
@@ -110,13 +112,10 @@ class ParkViewController: UITableViewController {
     
     func refreshAttractions(sender: UIRefreshControl? = nil) {
         setToolbarLabelText("Refreshing…")
-        self.startRefreshControl()
         parksManager.fetchAttractionsFor(parkType) { park, error in
             guard let park = park else { return }
-            dispatch_async(dispatch_get_main_queue()) {
-                self.park = park
-                self.stopRefreshControl()
-            }
+            self.park = park
+            self.refreshControl?.endRefreshing()
         }
     }
     
@@ -134,40 +133,31 @@ class ParkViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView()
-    }
-    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return park?.attractions.count ?? 0
+        let numberOfRows = park?.attractions.count ?? 0
+        setActivityIndicatorViewHidden(numberOfRows != 0)
+        self.tableView.scrollEnabled = numberOfRows != 0
+        return numberOfRows
     }
     
-    func setToolbarLabelText(text: String) {
+    private func setToolbarLabelText(text: String) {
         toolbarLabel.text = text
         toolbarLabel.sizeToFit()
     }
     
-    func startRefreshControl() {
-        refreshControl?.tintColor = UIColor.whiteColor()
-        refreshControl?.tintColorDidChange()
+    private func setActivityIndicatorViewHidden(hidden: Bool) {
+        if hidden {
+            activityIndicatorView.stopAnimating()
+            activityIndicatorView.removeFromSuperview()
+            return
+        }
         
-        self.refreshControl?.performSelector("beginRefreshing", withObject: nil, afterDelay: 0.0)
-        
-        refreshControl?.tintColor = UIColor.whiteColor()
-        refreshControl?.tintColorDidChange()
-    }
-    
-    func stopRefreshControl() {
-        refreshControl?.tintColor = UIColor.whiteColor()
-        refreshControl?.tintColorDidChange()
-        
-        self.refreshControl?.performSelector("endRefreshing", withObject: nil, afterDelay: 0.0)
-        
-        refreshControl?.tintColor = UIColor.whiteColor()
-        refreshControl?.tintColorDidChange()
+        activityIndicatorView.startAnimating()
+        view.addSubview(activityIndicatorView)
+        NSLayoutConstraint.activateConstraints(activityIndicatorView.constraintsWithAttributes([.CenterX, .CenterY], .Equal, to: view))
     }
 }
