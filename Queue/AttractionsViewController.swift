@@ -12,7 +12,7 @@ let AttractionCellIdentifier = "AttractionCell"
 
 let transparency: CGFloat = 0.95
 
-class ParkViewController: UITableViewController {
+class AttractionsViewController: UITableViewController {
     
     static let dateFormatter: NSDateFormatter = {
         let dateFormatter = NSDateFormatter()
@@ -56,7 +56,7 @@ class ParkViewController: UITableViewController {
             
             dispatch_async(dispatch_get_main_queue()) {
                 self.tableView.reloadData()
-                self.setToolbarLabelText("Updated at " + ParkViewController.dateFormatter.stringFromDate(park.lastUpdated))
+                self.setToolbarLabelText("Updated at " + AttractionsViewController.dateFormatter.stringFromDate(park.lastUpdated))
             }
         }
     }

@@ -20,7 +20,7 @@
 		66E68ACC1C22156400E2E7C3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68ACB1C22156400E2E7C3 /* Extensions.swift */; };
 		66E68ACE1C22158E00E2E7C3 /* ParkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68ACD1C22158E00E2E7C3 /* ParkView.swift */; };
 		66E68AD01C22188E00E2E7C3 /* ParkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68ACF1C22188E00E2E7C3 /* ParkType.swift */; };
-		66E68AD21C2237E300E2E7C3 /* ParkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68AD11C2237E300E2E7C3 /* ParkViewController.swift */; };
+		66E68AD21C2237E300E2E7C3 /* AttractionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68AD11C2237E300E2E7C3 /* AttractionsViewController.swift */; };
 		66E68AD41C2269BF00E2E7C3 /* AttractionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68AD31C2269BF00E2E7C3 /* AttractionCell.swift */; };
 		66E68AD61C233E1800E2E7C3 /* AttractionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66E68AD51C233E1800E2E7C3 /* AttractionCell.xib */; };
 /* End PBXBuildFile section */
@@ -41,7 +41,7 @@
 		66E68ACB1C22156400E2E7C3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		66E68ACD1C22158E00E2E7C3 /* ParkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkView.swift; sourceTree = "<group>"; };
 		66E68ACF1C22188E00E2E7C3 /* ParkType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkType.swift; sourceTree = "<group>"; };
-		66E68AD11C2237E300E2E7C3 /* ParkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkViewController.swift; sourceTree = "<group>"; };
+		66E68AD11C2237E300E2E7C3 /* AttractionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionsViewController.swift; sourceTree = "<group>"; };
 		66E68AD31C2269BF00E2E7C3 /* AttractionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionCell.swift; sourceTree = "<group>"; };
 		66E68AD51C233E1800E2E7C3 /* AttractionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttractionCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,7 +79,7 @@
 				66E68AAD1C21F7CD00E2E7C3 /* AppDelegate.swift */,
 				66E68AAF1C21F7CD00E2E7C3 /* ParksViewController.swift */,
 				66E68ACD1C22158E00E2E7C3 /* ParkView.swift */,
-				66E68AD11C2237E300E2E7C3 /* ParkViewController.swift */,
+				66E68AD11C2237E300E2E7C3 /* AttractionsViewController.swift */,
 				66E68AB11C21F7CD00E2E7C3 /* Main.storyboard */,
 				66E68AD51C233E1800E2E7C3 /* AttractionCell.xib */,
 				66E68AB41C21F7CD00E2E7C3 /* Assets.xcassets */,
@@ -178,7 +178,7 @@
 				66E68AD01C22188E00E2E7C3 /* ParkType.swift in Sources */,
 				66E68AC51C21F82D00E2E7C3 /* Attraction.swift in Sources */,
 				66E68ACA1C22020B00E2E7C3 /* AttractionType.swift in Sources */,
-				66E68AD21C2237E300E2E7C3 /* ParkViewController.swift in Sources */,
+				66E68AD21C2237E300E2E7C3 /* AttractionsViewController.swift in Sources */,
 				66E68AC31C21F82D00E2E7C3 /* TokenManager.swift in Sources */,
 				66E68AAE1C21F7CD00E2E7C3 /* AppDelegate.swift in Sources */,
 			);

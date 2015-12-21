@@ -53,7 +53,7 @@ class ParksViewController: UIViewController {
     
     func parkViewTapped(sender: UITapGestureRecognizer) {
         guard let view = sender.view, parkType = ParkType(rawValue: view.tag) else { return }
-        let parkViewController = ParkViewController(parkType: parkType, parksManager: parksManager)
+        let parkViewController = AttractionsViewController(parkType: parkType, parksManager: parksManager)
         navigationController?.pushViewController(parkViewController, animated: true)
     }
 }
