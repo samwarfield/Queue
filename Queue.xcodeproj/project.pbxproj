@@ -57,10 +57,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		66D7D1991C28AD8300CDC39A /* Attractions View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				66E68AD11C2237E300E2E7C3 /* AttractionsViewController.swift */,
+				66E68AD51C233E1800E2E7C3 /* AttractionCell.xib */,
+				66E68AD31C2269BF00E2E7C3 /* AttractionCell.swift */,
+			);
+			name = "Attractions View Controller";
+			sourceTree = "<group>";
+		};
+		66D7D19A1C28AD9A00CDC39A /* Parks View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				66E68AAF1C21F7CD00E2E7C3 /* ParksViewController.swift */,
+				66E68ACD1C22158E00E2E7C3 /* ParkView.swift */,
+			);
+			name = "Parks View Controller";
+			sourceTree = "<group>";
+		};
+		66D7D19B1C28ADAA00CDC39A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				66E68AB41C21F7CD00E2E7C3 /* Assets.xcassets */,
+				66E68AB61C21F7CD00E2E7C3 /* LaunchScreen.storyboard */,
+				66E68AB91C21F7CD00E2E7C3 /* Info.plist */,
+				66E68ACB1C22156400E2E7C3 /* Extensions.swift */,
+			);
+			name = "Supporting Files";
+			path = Queue;
+			sourceTree = "<group>";
+		};
+		66D7D19C1C28ADD700CDC39A /* Data Managers and Models */ = {
+			isa = PBXGroup;
+			children = (
+				66E68ABF1C21F82D00E2E7C3 /* TokenManager.swift */,
+				66E68AC01C21F82D00E2E7C3 /* ParksManager.swift */,
+				66E68AC11C21F82D00E2E7C3 /* Attraction.swift */,
+				66E68AC91C22020B00E2E7C3 /* AttractionType.swift */,
+				66E68AC21C21F82D00E2E7C3 /* Park.swift */,
+				66E68ACF1C22188E00E2E7C3 /* ParkType.swift */,
+			);
+			name = "Data Managers and Models";
+			sourceTree = "<group>";
+		};
 		66E68AA11C21F7CD00E2E7C3 = {
 			isa = PBXGroup;
 			children = (
 				66E68AAC1C21F7CD00E2E7C3 /* Queue */,
+				66D7D19B1C28ADAA00CDC39A /* Supporting Files */,
 				66E68AAB1C21F7CD00E2E7C3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -77,22 +122,10 @@
 			isa = PBXGroup;
 			children = (
 				66E68AAD1C21F7CD00E2E7C3 /* AppDelegate.swift */,
-				66E68AAF1C21F7CD00E2E7C3 /* ParksViewController.swift */,
-				66E68ACD1C22158E00E2E7C3 /* ParkView.swift */,
-				66E68AD11C2237E300E2E7C3 /* AttractionsViewController.swift */,
 				66E68AB11C21F7CD00E2E7C3 /* Main.storyboard */,
-				66E68AD51C233E1800E2E7C3 /* AttractionCell.xib */,
-				66E68AB41C21F7CD00E2E7C3 /* Assets.xcassets */,
-				66E68AB61C21F7CD00E2E7C3 /* LaunchScreen.storyboard */,
-				66E68AB91C21F7CD00E2E7C3 /* Info.plist */,
-				66E68ABF1C21F82D00E2E7C3 /* TokenManager.swift */,
-				66E68AC01C21F82D00E2E7C3 /* ParksManager.swift */,
-				66E68AC11C21F82D00E2E7C3 /* Attraction.swift */,
-				66E68AC91C22020B00E2E7C3 /* AttractionType.swift */,
-				66E68AC21C21F82D00E2E7C3 /* Park.swift */,
-				66E68ACF1C22188E00E2E7C3 /* ParkType.swift */,
-				66E68AD31C2269BF00E2E7C3 /* AttractionCell.swift */,
-				66E68ACB1C22156400E2E7C3 /* Extensions.swift */,
+				66D7D19A1C28AD9A00CDC39A /* Parks View Controller */,
+				66D7D1991C28AD8300CDC39A /* Attractions View Controller */,
+				66D7D19C1C28ADD700CDC39A /* Data Managers and Models */,
 			);
 			path = Queue;
 			sourceTree = "<group>";
