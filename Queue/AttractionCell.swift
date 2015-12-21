@@ -19,7 +19,5 @@ class AttractionCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-//        titleLabel.constraintWithAttribute(.Width, .GreaterThanOrEqual, to: detailLabel).active = true
     }
 }
