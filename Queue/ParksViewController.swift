@@ -38,7 +38,7 @@ class ParksViewController: UIViewController {
         parksManager.fetchAttractionsFor(.MagicKingdom) { park, error in
             print(park?.type)
             for parkType in ParkType.allValues {
-                if parkType == .MagicKingdom { continue }
+                if self.parksManager.parks[parkType] != nil { continue }
                 self.parksManager.fetchAttractionsFor(parkType) { park, error in
                     print(park?.type)
                 }
@@ -47,8 +47,8 @@ class ParksViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: true)
-        navigationController?.setToolbarHidden(true, animated: true)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.setToolbarHidden(true, animated: animated)
     }
     
     func parkViewTapped(sender: UITapGestureRecognizer) {
