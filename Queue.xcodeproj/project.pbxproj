@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		66D7D1A41C29F81C00CDC39A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D7D1A31C29F81C00CDC39A /* AppDelegate.swift */; };
+		66D7D1A61C29F81C00CDC39A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D7D1A51C29F81C00CDC39A /* ViewController.swift */; };
+		66D7D1A91C29F81C00CDC39A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D7D1A71C29F81C00CDC39A /* Main.storyboard */; };
+		66D7D1AB1C29F81C00CDC39A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66D7D1AA1C29F81C00CDC39A /* Assets.xcassets */; };
 		66E68AAE1C21F7CD00E2E7C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68AAD1C21F7CD00E2E7C3 /* AppDelegate.swift */; };
 		66E68AB01C21F7CD00E2E7C3 /* ParksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68AAF1C21F7CD00E2E7C3 /* ParksViewController.swift */; };
 		66E68AB31C21F7CD00E2E7C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E68AB11C21F7CD00E2E7C3 /* Main.storyboard */; };
@@ -26,6 +30,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		66D7D1A11C29F81C00CDC39A /* Queue TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Queue TV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		66D7D1A31C29F81C00CDC39A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		66D7D1A51C29F81C00CDC39A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		66D7D1A81C29F81C00CDC39A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		66D7D1AA1C29F81C00CDC39A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		66D7D1AC1C29F81C00CDC39A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66E68AAA1C21F7CD00E2E7C3 /* Queue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Queue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E68AAD1C21F7CD00E2E7C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66E68AAF1C21F7CD00E2E7C3 /* ParksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParksViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +57,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		66D7D19E1C29F81C00CDC39A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		66E68AA71C21F7CD00E2E7C3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -101,11 +118,24 @@
 			name = "Data Managers and Models";
 			sourceTree = "<group>";
 		};
+		66D7D1A21C29F81C00CDC39A /* Queue TV */ = {
+			isa = PBXGroup;
+			children = (
+				66D7D1A31C29F81C00CDC39A /* AppDelegate.swift */,
+				66D7D1A51C29F81C00CDC39A /* ViewController.swift */,
+				66D7D1A71C29F81C00CDC39A /* Main.storyboard */,
+				66D7D1AA1C29F81C00CDC39A /* Assets.xcassets */,
+				66D7D1AC1C29F81C00CDC39A /* Info.plist */,
+			);
+			path = "Queue TV";
+			sourceTree = "<group>";
+		};
 		66E68AA11C21F7CD00E2E7C3 = {
 			isa = PBXGroup;
 			children = (
 				66E68AAC1C21F7CD00E2E7C3 /* Queue */,
 				66D7D19B1C28ADAA00CDC39A /* Supporting Files */,
+				66D7D1A21C29F81C00CDC39A /* Queue TV */,
 				66E68AAB1C21F7CD00E2E7C3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -114,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				66E68AAA1C21F7CD00E2E7C3 /* Queue.app */,
+				66D7D1A11C29F81C00CDC39A /* Queue TV.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,6 +164,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		66D7D1A01C29F81C00CDC39A /* Queue TV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66D7D1AD1C29F81C00CDC39A /* Build configuration list for PBXNativeTarget "Queue TV" */;
+			buildPhases = (
+				66D7D19D1C29F81C00CDC39A /* Sources */,
+				66D7D19E1C29F81C00CDC39A /* Frameworks */,
+				66D7D19F1C29F81C00CDC39A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Queue TV";
+			productName = "Queue TV";
+			productReference = 66D7D1A11C29F81C00CDC39A /* Queue TV.app */;
+			productType = "com.apple.product-type.application";
+		};
 		66E68AA91C21F7CD00E2E7C3 /* Queue */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 66E68ABC1C21F7CD00E2E7C3 /* Build configuration list for PBXNativeTarget "Queue" */;
@@ -160,6 +208,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Adam Binsz";
 				TargetAttributes = {
+					66D7D1A01C29F81C00CDC39A = {
+						CreatedOnToolsVersion = 7.2;
+					};
 					66E68AA91C21F7CD00E2E7C3 = {
 						CreatedOnToolsVersion = 7.2;
 					};
@@ -179,11 +230,21 @@
 			projectRoot = "";
 			targets = (
 				66E68AA91C21F7CD00E2E7C3 /* Queue */,
+				66D7D1A01C29F81C00CDC39A /* Queue TV */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		66D7D19F1C29F81C00CDC39A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66D7D1AB1C29F81C00CDC39A /* Assets.xcassets in Resources */,
+				66D7D1A91C29F81C00CDC39A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		66E68AA81C21F7CD00E2E7C3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -198,6 +259,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		66D7D19D1C29F81C00CDC39A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66D7D1A61C29F81C00CDC39A /* ViewController.swift in Sources */,
+				66D7D1A41C29F81C00CDC39A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		66E68AA61C21F7CD00E2E7C3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -220,6 +290,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		66D7D1A71C29F81C00CDC39A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66D7D1A81C29F81C00CDC39A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		66E68AB11C21F7CD00E2E7C3 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -239,6 +317,36 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		66D7D1AE1C29F81C00CDC39A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = "Queue TV/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.adambinsz.Queue-TV";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		66D7D1AF1C29F81C00CDC39A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = "Queue TV/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.adambinsz.Queue-TV";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
 		66E68ABA1C21F7CD00E2E7C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -347,6 +455,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		66D7D1AD1C29F81C00CDC39A /* Build configuration list for PBXNativeTarget "Queue TV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66D7D1AE1C29F81C00CDC39A /* Debug */,
+				66D7D1AF1C29F81C00CDC39A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		66E68AA51C21F7CD00E2E7C3 /* Build configuration list for PBXProject "Queue" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
