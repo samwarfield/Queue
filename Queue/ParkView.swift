@@ -28,7 +28,7 @@ class ParkView: UIView {
         layoutView()
     }
     
-    private func layoutView() {å
+    private func layoutView() {
         clipsToBounds = true
         
         backgroundImageView.contentMode = .ScaleAspectFill
