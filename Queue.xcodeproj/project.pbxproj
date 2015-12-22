@@ -79,10 +79,10 @@
 		66D7D19B1C28ADAA00CDC39A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				66E68AB41C21F7CD00E2E7C3 /* Assets.xcassets */,
-				66E68AB61C21F7CD00E2E7C3 /* LaunchScreen.storyboard */,
-				66E68AB91C21F7CD00E2E7C3 /* Info.plist */,
 				66E68ACB1C22156400E2E7C3 /* Extensions.swift */,
+				66E68AB91C21F7CD00E2E7C3 /* Info.plist */,
+				66E68AB61C21F7CD00E2E7C3 /* LaunchScreen.storyboard */,
+				66E68AB41C21F7CD00E2E7C3 /* Assets.xcassets */,
 			);
 			name = "Supporting Files";
 			path = Queue;
@@ -328,6 +328,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.adambinsz.Queue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -339,6 +340,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.adambinsz.Queue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

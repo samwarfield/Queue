@@ -12,6 +12,7 @@ class ParkView: UIView {
     
     let titleLabel = UILabel()
     let backgroundImageView = UIImageView()
+    let tintView = UIView()
     
     convenience init() {
         self.init(frame: CGRect.zero)
@@ -27,7 +28,9 @@ class ParkView: UIView {
         layoutView()
     }
     
-    private func layoutView() {
+    private func layoutView() {å
+        clipsToBounds = true
+        
         backgroundImageView.contentMode = .ScaleAspectFill
         addSubview(backgroundImageView)
         NSLayoutConstraint.activateConstraints(backgroundImageView.constraintsEqualToSuperview())
@@ -38,5 +41,8 @@ class ParkView: UIView {
         
         titleLabel.textColor = UIColor.whiteColor()
         titleLabel.font = UIFont.boldSystemFontOfSize(24)
+        
+        backgroundImageView.addSubview(tintView)
+        NSLayoutConstraint.activateConstraints(tintView.constraintsEqualToSuperview())
     }
 }

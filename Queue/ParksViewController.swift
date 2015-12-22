@@ -27,7 +27,10 @@ class ParksViewController: UIViewController {
             let parkView = ParkView()
             parkView.titleLabel.text = parkType.description
             parkView.backgroundColor = parkType.color
-            parkView.tag = parkType.rawValue
+            parkView.tag = parkType.rawValueå
+            
+            parkView.backgroundImageView.image = UIImage(named: parkType.description)
+            parkView.tintView.backgroundColor = parkType.color.colorWithAlphaComponent(0.50)
             
             let gestureRecognizer = UITapGestureRecognizer(target: self, action: "parkViewTapped:")
             parkView.addGestureRecognizer(gestureRecognizer)
@@ -39,9 +42,7 @@ class ParksViewController: UIViewController {
             print(park?.type)
             for parkType in ParkType.allValues {
                 if self.parksManager.parks[parkType] != nil { continue }
-                self.parksManager.fetchAttractionsFor(parkType) { park, error in
-                    print(park?.type)
-                }
+                self.parksManager.fetchAttractionsFor(parkType)
             }
         }
     }
