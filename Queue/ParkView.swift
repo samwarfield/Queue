@@ -40,7 +40,7 @@ class ParkView: UIView {
         NSLayoutConstraint.activateConstraints(titleLabel.constraintsWithAttributes([.Width, .Height], .LessThanOrEqual, to: self))
         
         titleLabel.textColor = UIColor.whiteColor()
-        titleLabel.font = UIFont.boldSystemFontOfSize(24)
+        titleLabel.font = UIFont(name: "AvenirNext-Bold", size: 28.0)
         
         backgroundImageView.addSubview(tintView)
         NSLayoutConstraint.activateConstraints(tintView.constraintsEqualToSuperview())
