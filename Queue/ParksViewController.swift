@@ -27,7 +27,7 @@ class ParksViewController: UIViewController {
             let parkView = ParkView()
             parkView.titleLabel.text = parkType.description
             parkView.backgroundColor = parkType.color
-            parkView.tag = parkType.rawValueå
+            parkView.tag = parkType.rawValue
             
             parkView.backgroundImageView.image = UIImage(named: parkType.description)
             parkView.tintView.backgroundColor = parkType.color.colorWithAlphaComponent(0.50)
