@@ -17,6 +17,8 @@ class ParksViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        registerForPreviewingWithDelegate(self, sourceView: view)
+        
         view.backgroundColor = UIColor.blackColor()
         
         for parkType in ParkType.allValues {
@@ -66,3 +68,22 @@ class ParksViewController: UIViewController {
         navigationController?.pushViewController(parkViewController, animated: true)
     }
 }
+
+extension ParksViewController: UIViewControllerPreviewingDelegate {
+    func previewingContext(previewingContext: UIViewControllerPreviewing, commitViewController viewControllerToCommit: UIViewController) {
+        navigationController?.pushViewController(viewControllerToCommit, animated: false)
+    }
+    
+    func previewingContext(previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        for parkView in parkViews {
+            if CGRectContainsPoint(parkView.frame, location) {
+                guard let parkType = ParkType(rawValue: parkView.tag) else { continue }
+                return AttractionsViewController(parkType: parkType, parksManager: parksManager)
+            }
+        }
+        
+        return nil
+    }
+}
+
+

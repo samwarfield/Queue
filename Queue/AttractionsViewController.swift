@@ -74,12 +74,6 @@ class AttractionsViewController: UITableViewController {
     override func viewDidLoad() {
         navigationItem.title = parkType.description
         
-        navigationController?.navigationBar.barTintColor = parkType.color
-        navigationController?.toolbar.barTintColor = parkType.color
-        navigationController?.toolbar.translucent = false
-        
-        navigationController?.view.backgroundColor = UIColor.whiteColor()
-        
         tableView.backgroundColor = parkType.color.colorWithAlphaComponent(transparency)
         tableView.indicatorStyle = .White
         tableView.registerNib(UINib(nibName: "AttractionCell", bundle: nil), forCellReuseIdentifier: AttractionCellIdentifier)
@@ -107,6 +101,9 @@ class AttractionsViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.setToolbarHidden(false, animated: true)
+        navigationController?.navigationBar.barTintColor = parkType.color
+        navigationController?.toolbar.barTintColor = parkType.color
+        navigationController?.toolbar.translucent = false
     }
     
     func refreshAttractions(sender: UIRefreshControl? = nil) {
