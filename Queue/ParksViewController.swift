@@ -51,7 +51,6 @@ class ParksViewController: UIViewController {
         }
         
         parksManager.fetchAttractionsFor(.MagicKingdom) { park, error in
-            print(park?.type)
             for parkType in ParkType.allValues {
                 if self.parksManager.parks[parkType] != nil { continue }
                 self.parksManager.fetchAttractionsFor(parkType)

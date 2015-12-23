@@ -91,7 +91,7 @@ class AttractionsViewController: UITableViewController {
         let flexibleButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
         setToolbarItems([flexibleButton, toolbarButton, flexibleButton], animated: true)
         
-        if let park = parksManager.parks[parkType] where park.lastUpdated.timeIntervalSinceNow < 5 * 60 {
+        if let park = parksManager.parks[parkType] where abs(park.lastUpdated.timeIntervalSinceNow) > 5 * 60 {
             self.park = park
         } else {
             refreshAttractions()
