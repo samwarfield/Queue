@@ -72,6 +72,8 @@ class AttractionsViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
+        navigationItem.title = parkType.description
+        
         tableView.backgroundColor = parkType.color.colorWithAlphaComponent(transparency)
         tableView.indicatorStyle = .White
         tableView.registerNib(UINib(nibName: "AttractionCell", bundle: nil), forCellReuseIdentifier: AttractionCellIdentifier)
@@ -89,7 +91,7 @@ class AttractionsViewController: UITableViewController {
         let flexibleButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
         setToolbarItems([flexibleButton, toolbarButton, flexibleButton], animated: true)
         
-        if let park = parksManager.parks[parkType] where park.lastUpdated.timeIntervalSinceNow < 5 * 60 {
+        if let park = parksManager.parks[parkType] where abs(park.lastUpdated.timeIntervalSinceNow) > 5 * 60 {
             self.park = park
         } else {
             refreshAttractions()
@@ -99,14 +101,9 @@ class AttractionsViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.setToolbarHidden(false, animated: true)
-        
-        navigationItem.title = parkType.description
-        
         navigationController?.navigationBar.barTintColor = parkType.color
         navigationController?.toolbar.barTintColor = parkType.color
         navigationController?.toolbar.translucent = false
-        
-        navigationController?.view.backgroundColor = UIColor.whiteColor()
     }
     
     func refreshAttractions() {

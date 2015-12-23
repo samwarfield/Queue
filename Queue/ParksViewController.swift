@@ -13,10 +13,13 @@ class ParksViewController: UIViewController {
     let parksManager = ParksManager()
     
     var parkViews = [ParkView]()
-//    let stackView = UIStackView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 9.0, *) {
+            registerForPreviewingWithDelegate(self, sourceView: view)
+        }
         
         view.backgroundColor = UIColor.blackColor()
         
@@ -48,7 +51,6 @@ class ParksViewController: UIViewController {
         }
         
         parksManager.fetchAttractionsFor(.MagicKingdom) { park, error in
-            print(park?.type)
             for parkType in ParkType.allValues {
                 if self.parksManager.parks[parkType] != nil { continue }
                 self.parksManager.fetchAttractionsFor(parkType)
@@ -83,5 +85,23 @@ extension ParksViewController {
         get {
             return parkViews.first
         }
+    }
+}
+
+@available(iOS 9, *)
+extension ParksViewController: UIViewControllerPreviewingDelegate {
+    func previewingContext(previewingContext: UIViewControllerPreviewing, commitViewController viewControllerToCommit: UIViewController) {
+        navigationController?.pushViewController(viewControllerToCommit, animated: false)
+    }
+    
+    func previewingContext(previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        for parkView in parkViews {
+            if CGRectContainsPoint(parkView.frame, location) {
+                guard let parkType = ParkType(rawValue: parkView.tag) else { continue }
+                return AttractionsViewController(parkType: parkType, parksManager: parksManager)
+            }
+        }
+        
+        return nil
     }
 }
