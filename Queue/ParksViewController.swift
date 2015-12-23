@@ -17,7 +17,9 @@ class ParksViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        registerForPreviewingWithDelegate(self, sourceView: view)
+        if #available(iOS 9.0, *) {
+            registerForPreviewingWithDelegate(self, sourceView: view)
+        }
         
         view.backgroundColor = UIColor.blackColor()
         
@@ -69,6 +71,7 @@ class ParksViewController: UIViewController {
     }
 }
 
+@available(iOS 9, *)
 extension ParksViewController: UIViewControllerPreviewingDelegate {
     func previewingContext(previewingContext: UIViewControllerPreviewing, commitViewController viewControllerToCommit: UIViewController) {
         navigationController?.pushViewController(viewControllerToCommit, animated: false)
@@ -85,5 +88,3 @@ extension ParksViewController: UIViewControllerPreviewingDelegate {
         return nil
     }
 }
-
-
