@@ -13,7 +13,6 @@ class ParksViewController: UIViewController {
     let parksManager = ParksManager()
     
     var parkViews = [ParkView]()
-//    let stackView = UIStackView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,23 +64,5 @@ class ParksViewController: UIViewController {
         guard let view = sender.view, parkType = ParkType(rawValue: view.tag) else { return }
         let parkViewController = AttractionsViewController(parkType: parkType, parksManager: parksManager)
         navigationController?.pushViewController(parkViewController, animated: true)
-    }
-}
-
-extension ParksViewController {
-    
-    @available(tvOS 9, iOS 9, *)
-    override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
-        if let nextFocusedView = context.nextFocusedView {
-            coordinator.addCoordinatedAnimations({
-                self.view.bringSubviewToFront(nextFocusedView)
-            }, completion: nil)
-        }
-    }
-    
-    override weak var preferredFocusedView: UIView? {
-        get {
-            return parkViews.first
-        }
     }
 }
