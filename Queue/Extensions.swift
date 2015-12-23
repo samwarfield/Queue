@@ -59,4 +59,20 @@ extension UIImage {
         
         return UIGraphicsGetImageFromCurrentImageContext()
     }
+    
+    func tintWithColor(color: UIColor, blendMode: CGBlendMode? = nil) -> UIImage {
+        let frame = CGRect(origin: CGPoint.zero, size: size)
+        UIGraphicsBeginImageContextWithOptions(size, true, scale)
+        let context = UIGraphicsGetCurrentContext()
+        drawInRect(frame)
+        
+        if let blendMode = blendMode {
+            CGContextSetBlendMode(context, blendMode)
+        }
+        
+        color.setFill()
+        CGContextFillRect(context, frame)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        return image
+    }
 }
