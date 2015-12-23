@@ -12,30 +12,39 @@ class ParksViewController: UIViewController {
 
     let parksManager = ParksManager()
     
-    let stackView = UIStackView()
+    var parkViews = [ParkView]()
+//    let stackView = UIStackView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        stackView.axis = .Vertical
-        stackView.alignment = .Fill
-        stackView.distribution = .FillEqually
-        view.addSubview(stackView)
-        NSLayoutConstraint.activateConstraints(stackView.constraintsEqualToSuperview())
+        view.backgroundColor = UIColor.blackColor()
         
         for parkType in ParkType.allValues {
             let parkView = ParkView()
+            let image = UIImage(named: parkType.description)!.tintWithColor(parkType.color.colorWithAlphaComponent(0.5))
+            parkView.backgroundImageView.image = image
             parkView.titleLabel.text = parkType.description
-            parkView.backgroundColor = parkType.color
             parkView.tag = parkType.rawValue
-            
-            parkView.backgroundImageView.image = UIImage(named: parkType.description)
-            parkView.tintView.backgroundColor = parkType.color.colorWithAlphaComponent(0.50)
             
             let gestureRecognizer = UITapGestureRecognizer(target: self, action: "parkViewTapped:")
             parkView.addGestureRecognizer(gestureRecognizer)
             
-            stackView.addArrangedSubview(parkView)
+            view.addSubview(parkView)
+            NSLayoutConstraint.activateConstraints(parkView.constraintsWithAttributes([.Leading, .Trailing], .Equal, to: view))
+            
+            if let last = parkViews.last {
+                parkView.constraintWithAttribute(.Top, .Equal, to: .Bottom, of: last).active = true
+                parkView.constraintWithAttribute(.Height, .Equal, to: .Height, of: last).active = true
+            } else {
+                parkView.constraintWithAttribute(.Top, .Equal, to: .Top, of: view).active = true
+            }
+            
+            parkViews.append(parkView)
+            
+            if parkViews.count == ParkType.allValues.count {
+                parkView.constraintWithAttribute(.Bottom, .Equal, to: .Bottom, of: view).active = true
+            }
         }
         
         parksManager.fetchAttractionsFor(.MagicKingdom) { park, error in
@@ -59,3 +68,20 @@ class ParksViewController: UIViewController {
     }
 }
 
+extension ParksViewController {
+    
+    @available(tvOS 9, iOS 9, *)
+    override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
+        if let nextFocusedView = context.nextFocusedView {
+            coordinator.addCoordinatedAnimations({
+                self.view.bringSubviewToFront(nextFocusedView)
+            }, completion: nil)
+        }
+    }
+    
+    override weak var preferredFocusedView: UIView? {
+        get {
+            return parkViews.first
+        }
+    }
+}

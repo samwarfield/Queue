@@ -72,14 +72,6 @@ class AttractionsViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
-        navigationItem.title = parkType.description
-        
-        navigationController?.navigationBar.barTintColor = parkType.color
-        navigationController?.toolbar.barTintColor = parkType.color
-        navigationController?.toolbar.translucent = false
-        
-        navigationController?.view.backgroundColor = UIColor.whiteColor()
-        
         tableView.backgroundColor = parkType.color.colorWithAlphaComponent(transparency)
         tableView.indicatorStyle = .White
         tableView.registerNib(UINib(nibName: "AttractionCell", bundle: nil), forCellReuseIdentifier: AttractionCellIdentifier)
@@ -89,7 +81,7 @@ class AttractionsViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         
         refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: "refreshAttractions:", forControlEvents: .ValueChanged)
+        refreshControl?.addTarget(self, action: "refreshAttractions", forControlEvents: .ValueChanged)
         refreshControl?.tintColor = UIColor.whiteColor()
         refreshControl?.tintColorDidChange()
         
@@ -107,9 +99,17 @@ class AttractionsViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.setToolbarHidden(false, animated: true)
+        
+        navigationItem.title = parkType.description
+        
+        navigationController?.navigationBar.barTintColor = parkType.color
+        navigationController?.toolbar.barTintColor = parkType.color
+        navigationController?.toolbar.translucent = false
+        
+        navigationController?.view.backgroundColor = UIColor.whiteColor()
     }
     
-    func refreshAttractions(sender: UIRefreshControl? = nil) {
+    func refreshAttractions() {
         setToolbarLabelText("Refreshing…")
         parksManager.fetchAttractionsFor(parkType) { park, error in
             guard let park = park else { return }

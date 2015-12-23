@@ -11,6 +11,19 @@
 		66D7D1A61C29F81C00CDC39A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D7D1A51C29F81C00CDC39A /* ViewController.swift */; };
 		66D7D1A91C29F81C00CDC39A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D7D1A71C29F81C00CDC39A /* Main.storyboard */; };
 		66D7D1AB1C29F81C00CDC39A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66D7D1AA1C29F81C00CDC39A /* Assets.xcassets */; };
+		66D7D1B01C29F96800CDC39A /* ParksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68AAF1C21F7CD00E2E7C3 /* ParksViewController.swift */; };
+		66D7D1B11C29F96800CDC39A /* ParkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68ACD1C22158E00E2E7C3 /* ParkView.swift */; };
+		66D7D1B21C29F98900CDC39A /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68ABF1C21F82D00E2E7C3 /* TokenManager.swift */; };
+		66D7D1B31C29F98900CDC39A /* ParksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68AC01C21F82D00E2E7C3 /* ParksManager.swift */; };
+		66D7D1B41C29F98900CDC39A /* Attraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68AC11C21F82D00E2E7C3 /* Attraction.swift */; };
+		66D7D1B51C29F98900CDC39A /* AttractionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68AC91C22020B00E2E7C3 /* AttractionType.swift */; };
+		66D7D1B61C29F98900CDC39A /* Park.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68AC21C21F82D00E2E7C3 /* Park.swift */; };
+		66D7D1B71C29F98900CDC39A /* ParkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68ACF1C22188E00E2E7C3 /* ParkType.swift */; };
+		66D7D1B81C29F99900CDC39A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68ACB1C22156400E2E7C3 /* Extensions.swift */; };
+		66D7D1B91C29FA7300CDC39A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E68AB41C21F7CD00E2E7C3 /* Assets.xcassets */; };
+		66D7D1BA1C29FA9E00CDC39A /* AttractionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68AD11C2237E300E2E7C3 /* AttractionsViewController.swift */; };
+		66D7D1BB1C29FA9E00CDC39A /* AttractionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68AD31C2269BF00E2E7C3 /* AttractionCell.swift */; };
+		66D7D1BE1C2A024A00CDC39A /* AttractionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66D7D1BD1C2A024A00CDC39A /* AttractionCell.xib */; };
 		66E68AAE1C21F7CD00E2E7C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68AAD1C21F7CD00E2E7C3 /* AppDelegate.swift */; };
 		66E68AB01C21F7CD00E2E7C3 /* ParksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68AAF1C21F7CD00E2E7C3 /* ParksViewController.swift */; };
 		66E68AB31C21F7CD00E2E7C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E68AB11C21F7CD00E2E7C3 /* Main.storyboard */; };
@@ -36,6 +49,7 @@
 		66D7D1A81C29F81C00CDC39A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		66D7D1AA1C29F81C00CDC39A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66D7D1AC1C29F81C00CDC39A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66D7D1BD1C2A024A00CDC39A /* AttractionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttractionCell.xib; sourceTree = "<group>"; };
 		66E68AAA1C21F7CD00E2E7C3 /* Queue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Queue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E68AAD1C21F7CD00E2E7C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66E68AAF1C21F7CD00E2E7C3 /* ParksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParksViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +138,7 @@
 				66D7D1A31C29F81C00CDC39A /* AppDelegate.swift */,
 				66D7D1A51C29F81C00CDC39A /* ViewController.swift */,
 				66D7D1A71C29F81C00CDC39A /* Main.storyboard */,
+				66D7D1BD1C2A024A00CDC39A /* AttractionCell.xib */,
 				66D7D1AA1C29F81C00CDC39A /* Assets.xcassets */,
 				66D7D1AC1C29F81C00CDC39A /* Info.plist */,
 			);
@@ -240,6 +255,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66D7D1BE1C2A024A00CDC39A /* AttractionCell.xib in Resources */,
+				66D7D1B91C29FA7300CDC39A /* Assets.xcassets in Resources */,
 				66D7D1AB1C29F81C00CDC39A /* Assets.xcassets in Resources */,
 				66D7D1A91C29F81C00CDC39A /* Main.storyboard in Resources */,
 			);
@@ -265,6 +282,17 @@
 			files = (
 				66D7D1A61C29F81C00CDC39A /* ViewController.swift in Sources */,
 				66D7D1A41C29F81C00CDC39A /* AppDelegate.swift in Sources */,
+				66D7D1B01C29F96800CDC39A /* ParksViewController.swift in Sources */,
+				66D7D1B11C29F96800CDC39A /* ParkView.swift in Sources */,
+				66D7D1B21C29F98900CDC39A /* TokenManager.swift in Sources */,
+				66D7D1B31C29F98900CDC39A /* ParksManager.swift in Sources */,
+				66D7D1B41C29F98900CDC39A /* Attraction.swift in Sources */,
+				66D7D1B51C29F98900CDC39A /* AttractionType.swift in Sources */,
+				66D7D1B61C29F98900CDC39A /* Park.swift in Sources */,
+				66D7D1B71C29F98900CDC39A /* ParkType.swift in Sources */,
+				66D7D1B81C29F99900CDC39A /* Extensions.swift in Sources */,
+				66D7D1BA1C29FA9E00CDC39A /* AttractionsViewController.swift in Sources */,
+				66D7D1BB1C29FA9E00CDC39A /* AttractionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +461,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Queue/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.adambinsz.Queue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -445,6 +474,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Queue/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.adambinsz.Queue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -462,6 +492,7 @@
 				66D7D1AF1C29F81C00CDC39A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		66E68AA51C21F7CD00E2E7C3 /* Build configuration list for PBXProject "Queue" */ = {
 			isa = XCConfigurationList;
