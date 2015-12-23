@@ -43,21 +43,18 @@ class ParksManager {
             return
         }
         
-        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        configuration.HTTPAdditionalHeaders = [
-            "Authorization" : "BEARER \(authorizationToken)",
-            "Accept" : "application/json;apiversion=1",
-            "X-Conversation-Id" : "~WDPRO-MOBILE.CLIENT-PROD"]
-        
-        let session = NSURLSession(configuration: configuration, delegate: nil, delegateQueue: NSOperationQueue.mainQueue())
-        let request = NSURLRequest(URL: URL)
-        
-        session.dataTaskWithRequest(request) { responseData, URLResponse, error in
+        requestWithURL(URL) { responseData, URLResponse, error in
             
             var completionError: ErrorType? = error
             var completionPark: Park?
             
             defer {
+                if let error = completionError {
+                    print(error)
+                }
+                
+                print(parkType)
+                
                 completion?(park: completionPark, error: completionError)
             }
             
@@ -78,6 +75,48 @@ class ParksManager {
             } catch {
                 completionError = ParksManagerError.SerializationError
             }
-        }.resume()
+        }
+    }
+    
+    func fetchScheduleFor(parkType: ParkType) {
+        let URLString = "https://api.wdpro.disney.go.com/facility-service/schedules/\(parkType.rawValue)"
+        guard let URL = NSURL(string: URLString) else {
+            return
+        }
+        
+        requestWithURL(URL) { responseData, URLResponse, error in
+            
+            if let error = error {
+                print(error)
+                
+            }
+            
+            guard let responseData = responseData else { return }
+            
+            do {
+                let response = try NSJSONSerialization.JSONObjectWithData(responseData, options: [])
+                
+                print(response)
+            } catch {
+                
+            }
+        }
+    }
+    
+    private func requestWithURL(URL: NSURL, completionHandler: ((NSData?, NSURLResponse?, NSError?) -> ())?) {
+        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        configuration.HTTPAdditionalHeaders = [
+            "Authorization" : "BEARER \(TokenManager.token!)",
+            "Accept" : "application/json;apiversion=1",
+            "X-Conversation-Id" : "~WDPRO-MOBILE.CLIENT-PROD"]
+        
+        let session = NSURLSession(configuration: configuration, delegate: nil, delegateQueue: NSOperationQueue.mainQueue())
+        let request = NSURLRequest(URL: URL)
+
+        if let completionHandler = completionHandler {
+            session.dataTaskWithRequest(request, completionHandler: completionHandler).resume()
+        } else {
+            session.dataTaskWithRequest(request).resume()
+        }
     }
 }

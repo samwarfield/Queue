@@ -16,12 +16,12 @@ class ParksViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.whiteColor()
         
         if #available(iOS 9.0, *) {
             registerForPreviewingWithDelegate(self, sourceView: view)
         }
         
-        view.backgroundColor = UIColor.blackColor()
         
         for parkType in ParkType.allValues {
             let parkView = ParkView()
@@ -51,10 +51,12 @@ class ParksViewController: UIViewController {
         }
         
         parksManager.fetchAttractionsFor(.MagicKingdom) { park, error in
-            for parkType in ParkType.allValues {
-                if self.parksManager.parks[parkType] != nil { continue }
-                self.parksManager.fetchAttractionsFor(parkType)
-            }
+//            for parkType in ParkType.allValues {
+//                if self.parksManager.parks[parkType] != nil { continue }
+//                self.parksManager.fetchAttractionsFor(parkType)
+//            }
+            
+           self.parksManager.fetchScheduleFor(.MagicKingdom)
         }
     }
     
