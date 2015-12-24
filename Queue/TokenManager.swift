@@ -19,8 +19,6 @@ struct TokenManager {
     static private(set) var token: String?
     static private(set) var expirationDate: NSDate?
     
-    static private var fetchingToken = false
-    
     static func fetchToken(completion: ((token: String?, error: ErrorType?) -> ())? = nil) {
     
         guard let URL = NSURL(string: "https://authorization.go.com/token") else {
@@ -37,19 +35,25 @@ struct TokenManager {
         
         session.dataTaskWithRequest(request) { responseData, URLResponse, error in
             
+            var completionError: ErrorType? = error
+            var completionToken: String?
+            
+            defer {
+                completion?(token: completionToken, error: completionError)
+            }
+            
             guard let responseData = responseData else {
-                completion?(token: nil, error: error)
                 return
             }
             
             do {
                 guard let response = try NSJSONSerialization.JSONObjectWithData(responseData, options: []) as? [String: AnyObject] else {
-                    completion?(token: nil, error: TokenError.SerializationError)
+                    completionError = TokenError.SerializationError
                     return
                 }
                 
                 guard let token = response["access_token"] as? String else {
-                    completion?(token: nil, error: TokenError.ResponseError)
+                    completionError = TokenError.ResponseError
                     return
                 }
                 
@@ -58,16 +62,15 @@ struct TokenManager {
                 let expiration = response["expires_in"] as? Double ?? 900
                 self.expirationDate = NSDate(timeIntervalSinceNow: expiration)
                 
-                completion?(token: token, error: nil)
+                completionToken = token
+                return
                 
             } catch {
-                completion?(token: nil, error: TokenError.SerializationError)
+                completionError = TokenError.SerializationError
                 return
             }
         }.resume()
     }
     
-    private init() {
-        
-    }
+    private init() { }
 }

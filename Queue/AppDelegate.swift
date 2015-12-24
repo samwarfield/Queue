@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        TokenManager.fetchToken()
+        
         let shadowImage = UIImage.fromColor(UIColor.whiteColor().colorWithAlphaComponent(0.2))
         
         UINavigationBar.appearance().translucent = false

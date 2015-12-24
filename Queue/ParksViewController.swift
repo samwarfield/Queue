@@ -50,14 +50,10 @@ class ParksViewController: UIViewController {
             }
         }
         
-        parksManager.fetchAttractionsFor(.MagicKingdom) { park, error in
-//            for parkType in ParkType.allValues {
-//                if self.parksManager.parks[parkType] != nil { continue }
-//                self.parksManager.fetchAttractionsFor(parkType)
-//            }
-            
-           self.parksManager.fetchScheduleFor(.MagicKingdom)
+        for parkType in ParkType.allValues {
+            parksManager.fetchAttractionsFor(parkType)
         }
+        
     }
     
     override func viewWillAppear(animated: Bool) {

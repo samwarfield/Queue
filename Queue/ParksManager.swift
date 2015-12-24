@@ -16,9 +16,9 @@ enum ParksManagerError: ErrorType {
 }
 
 class ParksManager {
-   
+
     private(set) var parks = [ParkType: Park]()
-    
+
     func fetchAttractionsFor(parkType: ParkType, completion: ParkFetchCompletionHandler? = nil) {
         if let token = TokenManager.token, expirationDate = TokenManager.expirationDate where expirationDate.timeIntervalSinceNow > 0 {
             fetchAttractionsFor(parkType, authorizationToken: token, completion: completion)
@@ -104,11 +104,13 @@ class ParksManager {
     }
     
     private func requestWithURL(URL: NSURL, completionHandler: ((NSData?, NSURLResponse?, NSError?) -> ())?) {
+        
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         configuration.HTTPAdditionalHeaders = [
             "Authorization" : "BEARER \(TokenManager.token!)",
             "Accept" : "application/json;apiversion=1",
             "X-Conversation-Id" : "~WDPRO-MOBILE.CLIENT-PROD"]
+        
         
         let session = NSURLSession(configuration: configuration, delegate: nil, delegateQueue: NSOperationQueue.mainQueue())
         let request = NSURLRequest(URL: URL)
