@@ -19,9 +19,14 @@ struct TokenManager {
     static private(set) var token: String?
     static private(set) var expirationDate: NSDate?
     
+    static private(set) var fetchingToken = false
+    
     static func fetchToken(completion: ((token: String?, error: ErrorType?) -> ())? = nil) {
+        
+        fetchingToken = true
     
         guard let URL = NSURL(string: "https://authorization.go.com/token") else {
+            fetchingToken = false
             completion?(token: nil, error: TokenError.URLError)
             return
         }
@@ -39,6 +44,7 @@ struct TokenManager {
             var completionToken: String?
             
             defer {
+                fetchingToken = false
                 completion?(token: completionToken, error: completionError)
             }
             
@@ -58,6 +64,8 @@ struct TokenManager {
                 }
                 
                 self.token = token
+                
+                print(token)
                 
                 let expiration = response["expires_in"] as? Double ?? 900
                 self.expirationDate = NSDate(timeIntervalSinceNow: expiration)

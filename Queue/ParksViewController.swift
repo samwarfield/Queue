@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftDate
 
 class ParksViewController: UIViewController {
 
@@ -21,7 +22,6 @@ class ParksViewController: UIViewController {
         if #available(iOS 9.0, *) {
             registerForPreviewingWithDelegate(self, sourceView: view)
         }
-        
         
         for parkType in ParkType.allValues {
             let parkView = ParkView()
@@ -51,10 +51,18 @@ class ParksViewController: UIViewController {
         }
         
         for parkType in ParkType.allValues {
-            parksManager.fetchAttractionsFor(parkType)
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                self.parksManager.fetchAttractionsFor(parkType)
+            }
         }
         
     }
+    
+    let dateFormatter: NSDateFormatter = {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "h:mm a M/d"
+        return dateFormatter
+    }()
     
     override func viewWillAppear(animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)

@@ -20,6 +20,9 @@ class ParksManager {
     private(set) var parks = [ParkType: Park]()
 
     func fetchAttractionsFor(parkType: ParkType, completion: ParkFetchCompletionHandler? = nil) {
+        
+        while TokenManager.fetchingToken { }
+        
         if let token = TokenManager.token, expirationDate = TokenManager.expirationDate where expirationDate.timeIntervalSinceNow > 0 {
             fetchAttractionsFor(parkType, authorizationToken: token, completion: completion)
             return
@@ -74,31 +77,6 @@ class ParksManager {
                 
             } catch {
                 completionError = ParksManagerError.SerializationError
-            }
-        }
-    }
-    
-    func fetchScheduleFor(parkType: ParkType) {
-        let URLString = "https://api.wdpro.disney.go.com/facility-service/schedules/\(parkType.rawValue)"
-        guard let URL = NSURL(string: URLString) else {
-            return
-        }
-        
-        requestWithURL(URL) { responseData, URLResponse, error in
-            
-            if let error = error {
-                print(error)
-                
-            }
-            
-            guard let responseData = responseData else { return }
-            
-            do {
-                let response = try NSJSONSerialization.JSONObjectWithData(responseData, options: [])
-                
-                print(response)
-            } catch {
-                
             }
         }
     }
