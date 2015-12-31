@@ -86,6 +86,7 @@ extension ParksViewController: UIViewControllerPreviewingDelegate {
         for parkView in parkViews {
             if CGRectContainsPoint(parkView.frame, location) {
                 guard let parkType = ParkType(rawValue: parkView.tag) else { continue }
+                previewingContext.sourceRect = parkView.frame
                 return AttractionsViewController(parkType: parkType, parksManager: parksManager)
             }
         }
