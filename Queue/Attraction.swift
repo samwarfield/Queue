@@ -15,6 +15,7 @@ struct Attraction: RawRepresentable {
     let identifier: Int
     let waitTime: Int?
     let status: String
+    let fastPassAvailable: Bool
     
     let rawValue: [String: AnyObject]
     
@@ -39,6 +40,8 @@ struct Attraction: RawRepresentable {
         
         self.waitTime = waitTimeInfo["postedWaitMinutes"] as? Int
         self.status = status
+        
+        self.fastPassAvailable = Bool((waitTimeInfo["fastPass"]?["available"] as? Bool) ?? 0)
     }
 }
 
