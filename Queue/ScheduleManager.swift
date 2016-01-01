@@ -18,7 +18,7 @@ struct ScheduleManager {
             return
         }
         
-        requestWithURL(URL) { responseData, URLResponse, error in
+        QueueAPI.sendRequestWithURL(URL) { responseData, URLResponse, error in
             
             var schedule: [NSDate: Schedule]?
             var completionError: NSError? = error
@@ -44,28 +44,6 @@ struct ScheduleManager {
             } catch {
                 return
             }
-        }
-    }
-    
-    private static func requestWithURL(URL: NSURL, completionHandler: ((NSData?, NSURLResponse?, NSError?) -> ())?) {
-        
-//        while (TokenManager.token == nil && TokenManager.fetchingToken) { }
-        
-        guard let token = TokenManager.token else { return }
-        
-        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        configuration.HTTPAdditionalHeaders = [
-            "Authorization" : "BEARER \(token)",
-            "Accept" : "application/json;apiversion=1",
-            "X-Conversation-Id" : "~WDPRO-MOBILE.CLIENT-PROD"]
-        
-        let session = NSURLSession(configuration: configuration, delegate: nil, delegateQueue: NSOperationQueue.mainQueue())
-        let request = NSURLRequest(URL: URL)
-        
-        if let completionHandler = completionHandler {
-            session.dataTaskWithRequest(request, completionHandler: completionHandler).resume()
-        } else {
-            session.dataTaskWithRequest(request).resume()
         }
     }
 }

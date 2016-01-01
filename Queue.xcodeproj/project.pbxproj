@@ -12,6 +12,7 @@
 		66DC08A01C3487870068F8D0 /* SwiftDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66DC089F1C3487870068F8D0 /* SwiftDate.framework */; };
 		66DC08A11C3487870068F8D0 /* SwiftDate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 66DC089F1C3487870068F8D0 /* SwiftDate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		66DC08A41C349E840068F8D0 /* OAStackView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66DC08A31C349E840068F8D0 /* OAStackView.framework */; };
+		66E3A5721C36309200F020FD /* QueueAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E3A5711C36309200F020FD /* QueueAPI.swift */; };
 		66E68AAE1C21F7CD00E2E7C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68AAD1C21F7CD00E2E7C3 /* AppDelegate.swift */; };
 		66E68AB01C21F7CD00E2E7C3 /* ParksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E68AAF1C21F7CD00E2E7C3 /* ParksViewController.swift */; };
 		66E68AB31C21F7CD00E2E7C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E68AB11C21F7CD00E2E7C3 /* Main.storyboard */; };
@@ -49,6 +50,7 @@
 		667A75C41C2BA20C0019165B /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		66DC089F1C3487870068F8D0 /* SwiftDate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftDate.framework; path = ../Carthage/Build/iOS/SwiftDate.framework; sourceTree = "<group>"; };
 		66DC08A31C349E840068F8D0 /* OAStackView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAStackView.framework; path = ../Carthage/Build/iOS/OAStackView.framework; sourceTree = "<group>"; };
+		66E3A5711C36309200F020FD /* QueueAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueAPI.swift; sourceTree = "<group>"; };
 		66E68AAA1C21F7CD00E2E7C3 /* Queue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Queue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E68AAD1C21F7CD00E2E7C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66E68AAF1C21F7CD00E2E7C3 /* ParksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParksViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		66D7D19C1C28ADD700CDC39A /* Data Managers and Models */ = {
 			isa = PBXGroup;
 			children = (
+				66E3A5711C36309200F020FD /* QueueAPI.swift */,
 				66E68ABF1C21F82D00E2E7C3 /* TokenManager.swift */,
 				66E68AC01C21F82D00E2E7C3 /* ParksManager.swift */,
 				667A75C21C2BA19B0019165B /* ScheduleManager.swift */,
@@ -265,6 +268,7 @@
 				66E68AAE1C21F7CD00E2E7C3 /* AppDelegate.swift in Sources */,
 				667A75C51C2BA20C0019165B /* Schedule.swift in Sources */,
 				667A75C31C2BA19B0019165B /* ScheduleManager.swift in Sources */,
+				66E3A5721C36309200F020FD /* QueueAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

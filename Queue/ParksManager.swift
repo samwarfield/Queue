@@ -18,36 +18,15 @@ enum ParksManagerError: ErrorType {
 class ParksManager {
 
     private(set) var parks = [ParkType: Park]()
-
-    func fetchAttractionsFor(parkType: ParkType, completion: ParkFetchCompletionHandler? = nil) {
-        
-//        while TokenManager.fetchingToken { }
-        
-        if let token = TokenManager.token, expirationDate = TokenManager.expirationDate where expirationDate.timeIntervalSinceNow > 0 {
-            fetchAttractionsFor(parkType, authorizationToken: token, completion: completion)
-            return
-        }
-        
-        TokenManager.fetchToken { token, error in
-            guard let token = token else {
-                completion?(park: nil, error: error)
-                return
-            }
-            
-            self.fetchAttractionsFor(parkType, authorizationToken: token, completion: completion)
-        }
-    }
     
-    private func fetchAttractionsFor(parkType: ParkType, authorizationToken: String, completion: ParkFetchCompletionHandler?) {
-        
+    func fetchAttractionsFor(parkType: ParkType, completion: ParkFetchCompletionHandler? = nil) {
         let URLString = "https://api.wdpro.disney.go.com/facility-service/theme-parks/\(parkType.rawValue);entityType=theme-park/wait-times"
         guard let URL = NSURL(string: URLString) else {
             completion?(park: nil, error: ParksManagerError.URLError)
             return
         }
         
-        requestWithURL(URL) { responseData, URLResponse, error in
-            
+        QueueAPI.sendRequestWithURL(URL) { responseData, URLResponse, error in
             var completionError: ErrorType? = error
             var completionPark: Park?
             
@@ -78,25 +57,6 @@ class ParksManager {
             } catch {
                 completionError = ParksManagerError.SerializationError
             }
-        }
-    }
-    
-    private func requestWithURL(URL: NSURL, completionHandler: ((NSData?, NSURLResponse?, NSError?) -> ())?) {
-        
-        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        configuration.HTTPAdditionalHeaders = [
-            "Authorization" : "BEARER \(TokenManager.token!)",
-            "Accept" : "application/json;apiversion=1",
-            "X-Conversation-Id" : "~WDPRO-MOBILE.CLIENT-PROD"]
-        
-        
-        let session = NSURLSession(configuration: configuration, delegate: nil, delegateQueue: NSOperationQueue.mainQueue())
-        let request = NSURLRequest(URL: URL)
-
-        if let completionHandler = completionHandler {
-            session.dataTaskWithRequest(request, completionHandler: completionHandler).resume()
-        } else {
-            session.dataTaskWithRequest(request).resume()
         }
     }
 }

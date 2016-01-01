@@ -12,6 +12,11 @@ import SwiftDate
 class ParksViewController: UIViewController {
 
     let parksManager = ParksManager()
+    let dateFormatter: NSDateFormatter = {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        return dateFormatter
+    }()
     
     var parkViews = [ParkView]()
     
@@ -24,6 +29,9 @@ class ParksViewController: UIViewController {
         }
         
         for parkType in ParkType.allValues {
+            
+            self.parksManager.fetchAttractionsFor(parkType)
+            
             let parkView = ParkView()
             let image = UIImage(named: parkType.description)!.tintWithColor(parkType.color.colorWithAlphaComponent(0.5))
             parkView.backgroundImageView.image = image
@@ -49,25 +57,12 @@ class ParksViewController: UIViewController {
                 parkView.constraintWithAttribute(.Bottom, .Equal, to: .Bottom, of: view).active = true
             }
         }
-        
-        for parkType in ParkType.allValues {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-                self.parksManager.fetchAttractionsFor(parkType)
-            }
-        }
-        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         updateSchedules()
     }
-    
-    let dateFormatter: NSDateFormatter = {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "h:mm a"
-        return dateFormatter
-    }()
     
     func updateSchedules() {
         print("updating schedules")
