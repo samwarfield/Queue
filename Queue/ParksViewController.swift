@@ -110,9 +110,9 @@ class ParksViewController: UIViewController {
     
     func didUpdateToken() {
         guard let _ = TokenManager.token else { return }
+        updateSchedules()
         for parkType in ParkType.allValues {
             self.parksManager.fetchAttractionsFor(parkType)
-            updateSchedules()
         }
     }
 }
