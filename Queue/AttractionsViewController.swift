@@ -41,7 +41,7 @@ class AttractionsViewController: UITableViewController {
                 if $0.fastPassAvailable { return true }
                 
                 let hasWaitTime = $0.waitTime != nil
-                let isClosed = $0.status == "Closed" || $0.status == "Down"
+                let isClosed = /* $0.status == "Closed" || */ $0.status == "Down"
                 
                 return hasWaitTime || isClosed
             }.sort {
