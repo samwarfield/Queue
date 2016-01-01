@@ -38,12 +38,7 @@ class AttractionsViewController: UITableViewController {
             guard var park = park else { return }
             park.attractions = park.attractions.filter{
                 if $0.type != .Attraction { return false }
-                if $0.fastPassAvailable { return true }
-                
-                let hasWaitTime = $0.waitTime != nil
-                let isClosed = /* $0.status == "Closed" || */ $0.status == "Down"
-                
-                return hasWaitTime || isClosed
+                return $0.fastPassAvailable || $0.waitTime != nil || $0.status == "Down"
             }.sort {
                 if $0.waitTime != nil && $1.waitTime != nil {
                     return $0.waitTime < $1.waitTime
