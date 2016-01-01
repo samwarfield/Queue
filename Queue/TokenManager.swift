@@ -16,7 +16,14 @@ enum TokenError: ErrorType {
 
 struct TokenManager {
     
-    static private(set) var token: String?
+    static let didUpdateTokenNotificationName = "didUpdateToken"
+    
+    static private(set) var token: String? {
+        didSet {
+            guard let _ = token else { return }
+            NSNotificationCenter.defaultCenter().postNotificationName(didUpdateTokenNotificationName, object: nil)
+        }
+    }
     static private(set) var expirationDate: NSDate?
     
     static private(set) var fetchingToken = false

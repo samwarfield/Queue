@@ -22,6 +22,9 @@ class ParksViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didUpdateToken", name: TokenManager.didUpdateTokenNotificationName, object: nil)
+        
         view.backgroundColor = UIColor.whiteColor()
         
         if #available(iOS 9.0, *) {
@@ -29,9 +32,6 @@ class ParksViewController: UIViewController {
         }
         
         for parkType in ParkType.allValues {
-            
-            self.parksManager.fetchAttractionsFor(parkType)
-            
             let parkView = ParkView()
             let image = UIImage(named: parkType.description)!.tintWithColor(parkType.color.colorWithAlphaComponent(0.5))
             parkView.backgroundImageView.image = image
@@ -61,11 +61,11 @@ class ParksViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        guard let _ = TokenManager.token else { return }
         updateSchedules()
     }
     
     func updateSchedules() {
-        print("updating schedules")
         for (index, parkType) in ParkType.allValues.enumerate() {
             ScheduleManager.fetchScheduleFor(parkType) { schedules, error in
                 if let error = error {
@@ -106,6 +106,14 @@ class ParksViewController: UIViewController {
         guard let view = sender.view, parkType = ParkType(rawValue: view.tag) else { return }
         let parkViewController = AttractionsViewController(parkType: parkType, parksManager: parksManager)
         navigationController?.pushViewController(parkViewController, animated: true)
+    }
+    
+    func didUpdateToken() {
+        guard let _ = TokenManager.token else { return }
+        for parkType in ParkType.allValues {
+            self.parksManager.fetchAttractionsFor(parkType)
+            updateSchedules()
+        }
     }
 }
 
