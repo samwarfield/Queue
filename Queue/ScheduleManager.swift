@@ -37,7 +37,7 @@ struct ScheduleManager {
                 guard let scheduleArray = response["schedules"] as? [[String: AnyObject]] else { return }
                 schedule = [NSDate: Schedule]()
                 for day in scheduleArray {
-                    if let day = Schedule(rawValue: day) {
+                    if let day = Schedule(rawValue: day) where day.type == .Operating {
                         schedule?[day.date] = day
                     }
                 }
