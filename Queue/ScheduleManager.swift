@@ -49,7 +49,7 @@ struct ScheduleManager {
     
     private static func requestWithURL(URL: NSURL, completionHandler: ((NSData?, NSURLResponse?, NSError?) -> ())?) {
         
-        while (TokenManager.token == nil && TokenManager.fetchingToken) { }
+//        while (TokenManager.token == nil && TokenManager.fetchingToken) { }
         
         guard let token = TokenManager.token else { return }
         

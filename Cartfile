@@ -1,1 +1,2 @@
 github "malcommac/SwiftDate" ~> 1.2
+github "oarrabi/OAStackView"

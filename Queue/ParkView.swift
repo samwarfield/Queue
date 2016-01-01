@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import OAStackView
 
 class ParkView: UIView {
-    
-    let titleLabel = UILabel()
+
     let backgroundImageView = UIImageView()
     let tintView = UIView()
+    
+    let stackView = OAStackView()
+    let titleLabel = UILabel()
+    let scheduleLabel = UILabel()
     
     convenience init() {
         self.init(frame: CGRect.zero)
@@ -35,12 +39,20 @@ class ParkView: UIView {
         addSubview(backgroundImageView)
         NSLayoutConstraint.activateConstraints(backgroundImageView.constraintsEqualToSuperview())
         
-        addSubview(titleLabel)
-        NSLayoutConstraint.activateConstraints(titleLabel.constraintsWithAttributes([.CenterX, .CenterY], .Equal, to: self))
-        NSLayoutConstraint.activateConstraints(titleLabel.constraintsWithAttributes([.Width, .Height], .LessThanOrEqual, to: self))
+        stackView.axis = .Vertical
+        stackView.alignment = .Center
+        stackView.spacing = -2
+        addSubview(stackView)
+        NSLayoutConstraint.activateConstraints(stackView.constraintsWithAttributes([.CenterX, .CenterY], .Equal, to: self))
         
+        stackView.addArrangedSubview(titleLabel)
         titleLabel.textColor = UIColor.whiteColor()
         titleLabel.font = UIFont(name: "AvenirNext-Bold", size: 28.0)
+        
+        stackView.addArrangedSubview(scheduleLabel)
+        scheduleLabel.textColor = UIColor.whiteColor().colorWithAlphaComponent(0.975)
+        scheduleLabel.font = UIFont(name: "AvenirNext-Bold", size: 14.0)
+        scheduleLabel.hidden = true
         
         backgroundImageView.addSubview(tintView)
         NSLayoutConstraint.activateConstraints(tintView.constraintsEqualToSuperview())

@@ -21,7 +21,7 @@ class ParksManager {
 
     func fetchAttractionsFor(parkType: ParkType, completion: ParkFetchCompletionHandler? = nil) {
         
-        while TokenManager.fetchingToken { }
+//        while TokenManager.fetchingToken { }
         
         if let token = TokenManager.token, expirationDate = TokenManager.expirationDate where expirationDate.timeIntervalSinceNow > 0 {
             fetchAttractionsFor(parkType, authorizationToken: token, completion: completion)

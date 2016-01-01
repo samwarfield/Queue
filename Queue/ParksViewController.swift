@@ -58,11 +58,49 @@ class ParksViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        updateSchedules()
+    }
+    
     let dateFormatter: NSDateFormatter = {
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "h:mm a M/d"
+        dateFormatter.dateFormat = "h:mm a"
         return dateFormatter
     }()
+    
+    func updateSchedules() {
+        print("updating schedules")
+        for (index, parkType) in ParkType.allValues.enumerate() {
+            ScheduleManager.fetchScheduleFor(parkType) { schedules, error in
+                if let error = error {
+                    print(error)
+                    return
+                }
+                
+                let today = NSDate().beginningOfDay
+                guard let schedules = schedules, todaySchedule = schedules[today],
+                    yesterdaySchedule = schedules[today - 1.day],
+                    tomorrowSchedule = schedules[today + 1.day],
+                    parkView = self.parkViews[safe: index]
+                else { return }
+                
+                
+                var date: NSDate!
+                let isOpen = (todaySchedule.openingTime.timeIntervalSinceNow < 0 && todaySchedule.closingTime.timeIntervalSinceNow > 0) || yesterdaySchedule.closingTime.timeIntervalSinceNow > 0
+                
+                if isOpen {
+                    date = yesterdaySchedule.closingTime.timeIntervalSinceNow > 0 ? yesterdaySchedule.closingTime : todaySchedule.closingTime
+                } else {
+                    date = todaySchedule.openingTime.timeIntervalSinceNow > 0 ? todaySchedule.openingTime : tomorrowSchedule.openingTime
+                }
+
+                self.dateFormatter.dateFormat = date.minute == 0 ? "h a" : "h:mm a"
+                parkView.scheduleLabel.text = (isOpen ? "CLOSES" : "OPENS") + " AT " + self.dateFormatter.stringFromDate(date)
+                parkView.scheduleLabel.hidden = false
+            }
+        }
+    }
     
     override func viewWillAppear(animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
