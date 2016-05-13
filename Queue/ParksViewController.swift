@@ -23,7 +23,7 @@ class ParksViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didUpdateToken", name: TokenManager.didUpdateTokenNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ParksViewController.didUpdateToken), name: TokenManager.didUpdateTokenNotificationName, object: nil)
         
         view.backgroundColor = UIColor.whiteColor()
         
@@ -38,7 +38,7 @@ class ParksViewController: UIViewController {
             parkView.titleLabel.text = parkType.description
             parkView.tag = parkType.rawValue
             
-            let gestureRecognizer = UITapGestureRecognizer(target: self, action: "parkViewTapped:")
+            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ParksViewController.parkViewTapped(_:)))
             parkView.addGestureRecognizer(gestureRecognizer)
             
             view.addSubview(parkView)

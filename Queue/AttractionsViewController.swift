@@ -84,7 +84,7 @@ class AttractionsViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         
         refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: "refreshAttractions:", forControlEvents: .ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(AttractionsViewController.refreshAttractions(_:)), forControlEvents: .ValueChanged)
         refreshControl?.tintColor = UIColor.whiteColor()
         refreshControl?.tintColorDidChange()
         

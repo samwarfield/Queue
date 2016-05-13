@@ -39,7 +39,7 @@ struct TokenManager {
         }
         
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-        let parameters = "grant_type=assertion&assertion_type=public&client_id=WDPRO-MOBILE.CLIENT-PROD"
+        let parameters = "grant_type=assertion&assertion_type=public&client_id=\(clientId)"
         
         let request = NSMutableURLRequest(URL: URL)
         request.HTTPMethod = "POST"

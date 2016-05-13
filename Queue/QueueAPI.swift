@@ -8,6 +8,8 @@
 
 import Foundation
 
+let clientId = "WDPRO-MOBILE.MDX.WDW.IOS-PROD"
+
 struct QueueAPI {
     static func sendRequestWithURL(URL: NSURL, completionHandler: ((NSData?, NSURLResponse?, NSError?) -> ())?) {
         
@@ -26,7 +28,7 @@ struct QueueAPI {
         configuration.HTTPAdditionalHeaders = [
             "Authorization" : "BEARER \(token)",
             "Accept" : "application/json;apiversion=1",
-            "X-Conversation-Id" : "~WDPRO-MOBILE.CLIENT-PROD"]
+            "X-Conversation-Id" : clientId]
         
         
         let session = NSURLSession(configuration: configuration, delegate: nil, delegateQueue: NSOperationQueue.mainQueue())
